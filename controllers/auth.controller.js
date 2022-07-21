@@ -13,7 +13,6 @@ const createAdminUser = async (req, res) => {
 const createClubLeader = async (req, res) => {
         req.body.accessLvL = "low";
         req.body.role="admin";
-
 }
 
 
@@ -22,7 +21,7 @@ const createUser = async (req, res) => {
         const rootAdminToken = req.query.token;
         const payload = Token.decodeToken(rootAdminToken);
         const rootAdminUser = await User.findById(payload.userID);
-
+        if(!rootAdminUser) {throw new Error('Access forbidden | code:3361')}
         const existingUser = await User.findOne({email : req.body.email});
         if(existingUser) { throw new Error("this email already exists") }
         console.log(rootAdminUser);
@@ -77,7 +76,7 @@ const loginUser = async (req, res) => {
         const passwordIdentity = await Password.comparePasswords(req.body.password, existingUser.password);
         if(!passwordIdentity) { throw new Error("incorrect email or password") }
         
-        const token = Token.generateToken({auth:true, user:existingUser});
+        const token = Token.generateToken({auth:true, user:existingUser, userID:existingUser._id});
         res.status(201).send({"msg":"ok", token, userID:existingUser._id});
     } catch(err) {
         console.log(err);

@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose');
 const ClubSchema = new Schema({
     leader : {
         type : Schema.Types.ObjectId,
+        ref:'User'
     },
     city : {
         type : String,
