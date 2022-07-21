@@ -45,7 +45,6 @@ const saveClubData = async (req, res) => {
     }
 }
 
-
 const getAllClubs = async (req, res) => {
     try {
         const adminToken = req.query.token;
