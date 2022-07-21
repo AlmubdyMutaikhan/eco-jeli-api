@@ -32,7 +32,7 @@ const saveClubData = async (req, res) => {
         await Club.findOneAndUpdate({leader:leaderID}, {$set:
             {
                 city : data.city,
-                name:data.name,
+                name:data.clubName,
                 logo:data.logo,
                 description:data.description,
         }});
