@@ -75,9 +75,10 @@ const loginUser = async (req, res) => {
 
         const passwordIdentity = await Password.comparePasswords(req.body.password, existingUser.password);
         if(!passwordIdentity) { throw new Error("incorrect email or password") }
-        
+
         const token = Token.generateToken({auth:true, user:existingUser, userID:existingUser._id});
-        res.status(201).send({"msg":"ok", token, userID:existingUser._id});
+        let role = (existingUser.accessLvL === 'root' || existingUser.accessLvL === 'mid');  
+        res.status(201).send({"msg":"ok", token, userID:existingUser._id, super:role});
     } catch(err) {
         console.log(err);
         res.status(400).send({"msg":"nok", "error" : err.message});
