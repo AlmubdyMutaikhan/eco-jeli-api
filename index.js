@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const userRoute = require('./routes/user.route');
 const blogRoute = require('./routes/blog.route');
+const eventRoute = require('./routes/event.route');
 
 DB.connectDB()
     .then(status => {
@@ -32,3 +33,4 @@ app.use('/auth', AuthRoute);
 app.use('/club', ClubRoute);
 app.use('/user', userRoute);
 app.use('/blog', blogRoute);
+app.use('/event', eventRoute);
