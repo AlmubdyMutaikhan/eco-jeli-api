@@ -88,6 +88,7 @@ const loginUser = async (req, res) => {
 const getPayload = async (req, res) => {
     const token = req.query.token;
     const payload = Token.decodeToken(token);
+    
     res.status(200).send({"msg":"ok", payload }); 
 } 
 

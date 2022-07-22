@@ -8,6 +8,8 @@ const ClubRoute = require('./routes/club.route');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const userRoute = require('./routes/user.route');
+const blogRoute = require('./routes/blog.route');
+
 DB.connectDB()
     .then(status => {
         app.listen(PORT, () => {
@@ -29,3 +31,4 @@ app.use(morgan('dev'));
 app.use('/auth', AuthRoute);
 app.use('/club', ClubRoute);
 app.use('/user', userRoute);
+app.use('/blog', blogRoute);
