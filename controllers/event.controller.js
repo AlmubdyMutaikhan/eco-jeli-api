@@ -9,6 +9,15 @@ const getAllEvents = async (req, res) => {
     }
 }
 
+const getEvent = async (req, res) => {
+    try {
+        const eventDoc = await Event.findById(req.params.eventID);
+        res.status(200).send({"msg":'ok', "event":eventDoc});
+    } catch(err) {
+        res.status(400).send({"msg":'nok', "err":err.message});
+    }
+}
+
 const postEvent = async (req, res) => {
     try {
         const event = await Event.create(req.body);
@@ -46,4 +55,5 @@ module.exports = {
     deleteEvent,
     getAllEvents,
     updateEvent,
+    getEvent
 }

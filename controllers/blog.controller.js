@@ -20,6 +20,15 @@ const postBlog = async (req, res) => {
     }
 }
 
+const getBlog = async (req, res) => {
+    try {
+        const blog = await Blog.findById(req.params.blogID);
+        res.status(200).send({"msg":'ok', "blog":blog});
+    } catch(err) {
+        res.status(400).send({"msg":'nok', "err":err.message});
+    }
+}
+
 const updateBlog = async (req, res) => {
     try {
         const blogID = req.params.blogID;
@@ -67,5 +76,6 @@ module.exports = {
     deleteBlog,
     getAllBlogs,
     checkAuth,
-    updateBlog
+    updateBlog,
+    getBlog
 }
