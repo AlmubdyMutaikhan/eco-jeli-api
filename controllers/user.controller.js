@@ -15,7 +15,7 @@ const getAllUsers = async  (req, res) => {
                     return user.email !== 'sanim@admin.com' && (user._id+'') !== (adminUser._id+'')
                 })
 
-                res.status(201).send({msg:'ok', usersRes});
+                res.status(201).send({msg:'ok', users:usersRes});
         } else {
             throw new Error('Access forbidden | code: 3361');
         }
