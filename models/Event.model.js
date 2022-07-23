@@ -8,10 +8,6 @@ const EventSchema = new Schema({
     desc : {
         type : String
     },
-    place : {
-        type : String,
-        required : true,
-    },
     date : {
         type : String,
         required : true
