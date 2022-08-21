@@ -10,6 +10,7 @@ const cors = require('cors');
 const userRoute = require('./routes/user.route');
 const blogRoute = require('./routes/blog.route');
 const eventRoute = require('./routes/event.route');
+const TestRoute = require('./routes/test.route');
 
 DB.connectDB()
     .then(status => {
@@ -34,3 +35,4 @@ app.use('/club', ClubRoute);
 app.use('/user', userRoute);
 app.use('/blog', blogRoute);
 app.use('/event', eventRoute);
+app.use('/funcode', TestRoute);
