@@ -36,3 +36,5 @@ app.use('/user', userRoute);
 app.use('/blog', blogRoute);
 app.use('/event', eventRoute);
 app.use('/funcode', TestRoute);
+
+// good luck on testing!
