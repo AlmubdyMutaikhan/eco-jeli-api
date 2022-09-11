@@ -11,6 +11,7 @@ const userRoute = require('./routes/user.route');
 const blogRoute = require('./routes/blog.route');
 const eventRoute = require('./routes/event.route');
 const TestRoute = require('./routes/test.route');
+const reversoRoute = require('./routes/reverso.route');
 
 DB.connectDB()
     .then(status => {
@@ -36,5 +37,5 @@ app.use('/user', userRoute);
 app.use('/blog', blogRoute);
 app.use('/event', eventRoute);
 app.use('/funcode', TestRoute);
-
+app.use('/reverso', reversoRoute);
 // good luck on testing!
